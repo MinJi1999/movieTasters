@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const config = require("./config/key");
@@ -16,6 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/users", require("./routes/user"));
+app.use("/api/post", require("./routes/post"));
 
 const port = process.env.PORT || 5000;
 
