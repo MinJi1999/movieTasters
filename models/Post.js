@@ -12,6 +12,7 @@ const postSchema = mongoose.Schema(
     },
     postTitle: {
       type: String,
+      maxlength: 25,
     },
     content: {
       type: String,
