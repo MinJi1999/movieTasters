@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/users", require("./routes/user"));
+app.use("/api/user", require("./routes/user"));
 app.use("/api/post", require("./routes/post"));
 
 const port = process.env.PORT || 5000;
