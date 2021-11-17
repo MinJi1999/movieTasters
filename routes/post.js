@@ -31,7 +31,7 @@ router.get("/getMyPost", (req, res) => {
   const type = req.query.type;
   const userId = req.query.id;
   if (type === "array") {
-    let ids = req.query.id.split(",");
+    const ids = req.query.id.split(",");
     productIds = ids.map((item) => {
       return item;
     });
@@ -50,7 +50,7 @@ router.get("/getMyPost", (req, res) => {
 
 router.get("/post_by_id", (req, res) => {
   const type = req.query.type;
-  let postId = req.query.id;
+  const postId = req.query.id;
   if (type === "array") {
     const ids = req.query.id.split(",");
     postId = ids.map((i) => {
@@ -69,6 +69,21 @@ router.get("/post_by_id", (req, res) => {
     });
 });
 
-router.put("/update", (req, res) => {});
+router.put("/update", (req, res) => {
+  const postId = req.body.postId;
+  const post = req.body;
+  Post.findOneAndUpdate(
+    { _id: postId },
+    post,
+    { upsert: true },
+    function (err, post) {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true, post });
+      }
+    }
+  );
+});
 
 module.exports = router;
