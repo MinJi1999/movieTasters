@@ -86,4 +86,32 @@ router.put("/update", (req, res) => {
   );
 });
 
+router.put("/update", (req, res) => {
+  const postId = req.body.postId;
+  const post = req.body;
+  Post.findOneAndUpdate(
+    { _id: postId },
+    post,
+    { upsert: true },
+    function (err, post) {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true, post });
+      }
+    }
+  );
+});
+
+router.delete("/delete", (req, res) => {
+  const postId = req.query.postId;
+  Post.deleteOne({ _id: postId }, function (err, post) {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    } else {
+      return res.status(200).json({ success: true, post });
+    }
+  });
+});
+
 module.exports = router;
