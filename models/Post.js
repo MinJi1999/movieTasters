@@ -32,8 +32,9 @@ const postSchema = mongoose.Schema(
     actor: {
       type: Array,
     },
-    image: {
-      type: String,
+    images: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: true }
