@@ -78,4 +78,21 @@ router.get("/logout", auth, (req, res) => {
   );
 });
 
+router.patch("/update", (req, res) => {
+  const userId = req.body._id;
+  const userInfo = req.body;
+  User.findOneAndUpdate(
+    { _id: userId },
+    userInfo,
+    { upsert: true },
+    function (err, userInfo) {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true, userInfo });
+      }
+    }
+  );
+});
+
 module.exports = router;
