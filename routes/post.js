@@ -2,6 +2,31 @@ const express = require("express");
 const router = express.Router();
 const { Post } = require("../models/Post");
 const { auth } = require("../middleware/auth");
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+
+var upload = multer({ storage: storage }).single("file");
+
+router.post("/image", (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      filePath: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
+});
 
 router.post("/save", (req, res) => {
   const post = new Post(req.body);
@@ -67,23 +92,6 @@ router.get("/post_by_id", (req, res) => {
         return res.status(200).json({ success: true, post });
       }
     });
-});
-
-router.put("/update", (req, res) => {
-  const postId = req.body.postId;
-  const post = req.body;
-  Post.findOneAndUpdate(
-    { _id: postId },
-    post,
-    { upsert: true },
-    function (err, post) {
-      if (err) {
-        return res.status(400).json({ success: false, err });
-      } else {
-        return res.status(200).json({ success: true, post });
-      }
-    }
-  );
 });
 
 router.put("/update", (req, res) => {
