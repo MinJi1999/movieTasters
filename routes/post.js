@@ -39,15 +39,15 @@ router.post("/save", (req, res) => {
   });
 });
 
-router.get("/get", (req, res) => {
+router.get("/getPost", (req, res) => {
   Post.find()
     .sort({ _id: -1 })
     .populate("writer")
-    .exec((err, postInfo) => {
+    .exec((err, post) => {
       if (err) {
         return res.status(400).json({ success: false, err });
       } else {
-        return res.status(200).json({ success: true, postInfo });
+        return res.status(200).json({ success: true, post });
       }
     });
 });
@@ -64,11 +64,11 @@ router.get("/getMyPost", (req, res) => {
   Post.find({ writer: { $in: userId } })
     .sort({ _id: -1 })
     .populate("writer")
-    .exec((err, postInfo) => {
+    .exec((err, post) => {
       if (err) {
         return res.status(400).json({ success: false, err });
       } else {
-        return res.status(200).json({ success: true, postInfo });
+        return res.status(200).json({ success: true, post });
       }
     });
 });
@@ -120,6 +120,26 @@ router.delete("/delete", (req, res) => {
       return res.status(200).json({ success: true, post });
     }
   });
+});
+
+router.post("/findByGenre", (req, res) => {
+  let findArgs = {};
+  for (let key in req.body) {
+    if (req.body[key].length > 0) {
+      findArgs[key] = req.body[key];
+    }
+  }
+  Post.find(findArgs)
+    // Post.find(findArgs)
+    .populate("writer")
+    .sort({ _id: -1 })
+    .exec((err, post) => {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true, post });
+      }
+    });
 });
 
 module.exports = router;
