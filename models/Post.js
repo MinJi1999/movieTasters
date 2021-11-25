@@ -24,7 +24,7 @@ const postSchema = mongoose.Schema(
       type: Date,
     },
     genre: {
-      type: Array,
+      type: String,
     },
     director: {
       type: Array,
