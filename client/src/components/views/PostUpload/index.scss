@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "ChosunKg";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.upload-area {
+  width: 100%;
+}
+.form-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  .ck.ck-editor {
+    width: 100%;
+    position: relative;
+  }
+}
+.upload-box {
+  display: flex;
+  width: 100%;
+}
+.movie-info-table {
+  margin: 0 0 25px 0;
+  background-color: #f1f1f1;
+}
+.post-title-input,
+.movie-title-input,
+.director-input,
+.actor-input {
+  width: 260px;
+  background-color: #f1f1f1;
+}
+input[type="checkbox"] {
+  width: 15px;
+}
+.genre-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 400px;
+  height: 130px;
+}
+
+.ck.ck-editor__main > .ck-editor__editable {
+  min-height: 500px;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  .submit-button {
+    width: 190px;
+    height: 50px;
+    font-size: 25px;
+    font-family: "ChosunKg";
+    background-color: white;
+    cursor: pointer;
+  }
+}

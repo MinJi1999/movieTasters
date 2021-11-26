@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "ChosunKg";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.modal-bg {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  z-index: 999;
+  .modal-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 460px;
+    height: 180px;
+    border: 7px double black;
+    background-color: #ffffff;
+    font-size: 20px;
+    font-family: "ChosunKg";
+    font-weight: 500;
+    .modal-text {
+      padding: 50px 0px;
+    }
+    .button-box {
+      width: 70%;
+      display: flex;
+      justify-content: space-around;
+      .no-button {
+        width: 140px;
+        height: 40px;
+        background-color: white;
+        border: 1px double black;
+        font-family: "ChosunKg";
+        font-size: 17px;
+        cursor: pointer;
+      }
+      .no-button:hover {
+        background-color: rgb(235, 235, 235);
+      }
+      .yes-button {
+        width: 140px;
+        height: 40px;
+        background-color: #5f5f5f;
+        border: 1px double black;
+        color: white;
+        font-family: "ChosunKg";
+        font-size: 17px;
+        cursor: pointer;
+      }
+      .yes-button:hover {
+        background-color: #3a3a3a;
+        color: white;
+      }
+    }
+  }
+}

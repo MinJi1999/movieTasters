@@ -1,0 +1,22 @@
+.black-bg {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 838px;
+  z-index: 999;
+  background-color: black;
+}
+
+.credit-text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+}
+.credit-text {
+  font-size: 50px;
+  color: white;
+}

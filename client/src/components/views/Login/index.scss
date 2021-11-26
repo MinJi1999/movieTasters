@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "ChosunKg";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.login-area {
+  width: 100%;
+  height: calc(100vh - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    .password-form-box,
+    .id-form-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .password-label,
+    .id-label {
+      display: inline-block;
+      width: 110px;
+      font-size: 25px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .id-input,
+    .password-input {
+      width: 170px;
+      height: 25px;
+    }
+    .button-box {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      .login-button {
+        width: 140px;
+        height: 40px;
+        background-color: black;
+        color: white;
+        font-family: "ChosunKg";
+        font-size: 20px;
+        border-style: none;
+        cursor: pointer;
+      }
+      .login-button:hover {
+        background-color: rgb(68, 68, 68);
+      }
+      .register-button {
+        width: 140px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        font-family: "ChosunKg";
+        font-size: 20px;
+        border-style: none;
+        cursor: pointer;
+      }
+      .register-button:hover {
+        background-color: rgb(184, 184, 184);
+      }
+    }
+  }
+}

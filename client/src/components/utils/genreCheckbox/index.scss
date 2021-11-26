@@ -1,0 +1,23 @@
+.genre-checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 40px);
+  height: 70px;
+  border: 1px solid;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #b0b0b07a;
+  .checkbox-box {
+    display: flex;
+    align-items: center;
+    width: 260px;
+    height: 15px;
+    .genre-checkbox {
+      // margin: 0;
+      height: 15px;
+      margin-right: 5px;
+    }
+    .genre-label {
+    }
+  }
+}
