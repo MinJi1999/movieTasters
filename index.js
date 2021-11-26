@@ -7,7 +7,12 @@ const cors = require("cors");
 const config = require("./config/key");
 const mongoose = require("mongoose");
 mongoose
-  .connect(config.mongoURI)
+  .connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then(() => console.log("몽고DB가 연결됐습니다. ;>"))
   .catch((err) => console.log(err));
 
