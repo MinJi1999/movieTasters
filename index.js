@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const config = require("./config/key");
 const mongoose = require("mongoose");
@@ -13,6 +14,7 @@ mongoose
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.use("/api/user", require("./routes/user"));
 app.use("/api/post", require("./routes/post"));
