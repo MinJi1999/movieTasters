@@ -2,10 +2,11 @@ import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./index.scss";
-import axios from "axios";
+// import axios from "axios";
 import { genres } from "../../utils/genresArray";
 import Notify from "../../utils/notify/Notify";
 import FileUpload from "../../utils/fileUpload/FileUpload";
+import apiClient from "../../../apiClient";
 
 function PostUpload(props) {
   const [notify, setNotify] = React.useState("");
@@ -113,7 +114,7 @@ function PostUpload(props) {
           setVisible(false);
         }, 2500);
       } else {
-        axios({
+        apiClient({
           url: "/api/post/save",
           method: "post",
           data: post,

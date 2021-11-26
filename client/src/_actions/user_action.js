@@ -8,11 +8,12 @@ import {
   SAVE_USER,
 } from "./types";
 import axios from "axios";
+import apiClient from "../apiClient";
 
 const USER_PATH = "/api/user";
 const POST_PATH = "/api/post";
 export function auth() {
-  const request = axios.get(`${USER_PATH}/auth`).then((res) => res.data);
+  const request = apiClient.get(`${USER_PATH}/auth`).then((res) => res.data);
   return {
     type: AUTH_USER,
     payload: request,
@@ -20,7 +21,7 @@ export function auth() {
 }
 
 export function registerUser(data) {
-  const request = axios
+  const request = apiClient
     .post(`${USER_PATH}/register`, data)
     .then((res) => res.data);
   return {
@@ -30,7 +31,7 @@ export function registerUser(data) {
 }
 
 export function loginUser(data) {
-  const request = axios
+  const request = apiClient
     .post(`${USER_PATH}/login`, data)
     .then((res) => res.data);
   return {
@@ -40,7 +41,7 @@ export function loginUser(data) {
 }
 
 export function logoutUser() {
-  const request = axios.get(`${USER_PATH}/logout`).then((res) => res.data);
+  const request = apiClient.get(`${USER_PATH}/logout`).then((res) => res.data);
   return {
     type: LOGOUT_USER,
     payload: request,
@@ -48,7 +49,9 @@ export function logoutUser() {
 }
 
 export function savePost(data) {
-  const request = axios.post(`${POST_PATH}/save`, data).then((res) => res.data);
+  const request = apiClient
+    .post(`${POST_PATH}/save`, data)
+    .then((res) => res.data);
   return {
     type: SAVE_POST,
     payload: request,
@@ -56,7 +59,7 @@ export function savePost(data) {
 }
 
 export function updateUser(data) {
-  const request = axios
+  const request = apiClient
     .patch(`${USER_PATH}/update`, data)
     .then((res) => res.data);
   return {
@@ -66,7 +69,7 @@ export function updateUser(data) {
 }
 
 export function getPostById(id) {
-  const request = axios
+  const request = apiClient
     .get(`${POST_PATH}/post_by_id?id=${id}&type=single`)
     .then((res) => res.data);
   return {

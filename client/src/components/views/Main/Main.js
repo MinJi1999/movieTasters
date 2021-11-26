@@ -2,12 +2,13 @@ import React from "react";
 import axios from "axios";
 import "./index.scss";
 import GenreCheckbox from "../../utils/genreCheckbox/GenreCheckbox";
+import apiClient from "../../../apiClient";
 
 function Main(props) {
   const [postDatas, setPostDatas] = React.useState([]);
 
   React.useEffect(() => {
-    axios
+    apiClient
       .get("/api/post/getPost")
       .then((res) => {
         if (res.data.success) {

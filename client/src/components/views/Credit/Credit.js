@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./index.scss";
+import apiClient from "../../../apiClient";
 
 function Credit({ postId, open }) {
   // console.log(actor);
@@ -8,10 +9,12 @@ function Credit({ postId, open }) {
 
   React.useEffect(() => {
     if (postId) {
-      axios.get(`/api/post/post_by_id?id=${postId}&type=single`).then((res) => {
-        setPost(res.data.post[0]);
-        console.log(post);
-      });
+      apiClient
+        .get(`/api/post/post_by_id?id=${postId}&type=single`)
+        .then((res) => {
+          setPost(res.data.post[0]);
+          console.log(post);
+        });
     }
   }, []);
 

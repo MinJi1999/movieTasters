@@ -5,6 +5,8 @@ import ReactHtmlParser from "html-react-parser";
 import DeleteModal from "../../../utils/modal/Modal";
 import { PieChart } from "react-minimal-pie-chart";
 import { chartColor } from "../../../utils/genresArray";
+import apiClient from "../../../../apiClient";
+
 function MyHome(props) {
   const [resPost, setResPost] = React.useState([]);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -14,15 +16,17 @@ function MyHome(props) {
   const chartGenreArray = [];
 
   React.useEffect(() => {
-    axios.get(`/api/post/getMyPost?id=${userId}&type=single`).then((res) => {
-      if (res.data.success) {
-        setResPost(res.data.post);
-        res.data.post.map((post) => {
-          return chartGenreArray.push(post.genre);
-        });
-        renderChartData(chartGenreArray);
-      }
-    });
+    apiClient
+      .get(`/api/post/getMyPost?id=${userId}&type=single`)
+      .then((res) => {
+        if (res.data.success) {
+          setResPost(res.data.post);
+          res.data.post.map((post) => {
+            return chartGenreArray.push(post.genre);
+          });
+          renderChartData(chartGenreArray);
+        }
+      });
   }, []);
 
   const closeModal = function () {
