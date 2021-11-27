@@ -139,7 +139,7 @@ function PostUpload(props) {
       <Notify visible={visible} text={notify} />
       <div className="form-wrapper">
         <div className="upload-box">
-          <table border="1" width="50%" className="movie-info-table">
+          <table border="1" width="55%" className="movie-info-table">
             <tbody>
               <tr>
                 <td align="center" style={{ padding: "5px", width: "90px" }}>

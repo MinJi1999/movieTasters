@@ -3,7 +3,7 @@ import Dropzone from "react-dropzone";
 import axios from "axios";
 
 function FileUpload(props) {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [image, setImage] = React.useState([]);
 
   React.useEffect(() => {
@@ -18,7 +18,6 @@ function FileUpload(props) {
     const formData = new FormData();
     formData.append("upload_preset", "movieTasters");
     formData.append("file", files[0]);
-    console.log(formData);
     axios
       .post(
         "https://api.cloudinary.com/v1_1/inthefuture/image/upload",
@@ -43,54 +42,61 @@ function FileUpload(props) {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        width: "40%",
       }}
     >
       <Dropzone onDrop={dropHandler}>
         {({ getRootProps, getInputProps }) => (
           <div
             style={{
-              width: 300,
-              height: 240,
-              border: "1px solid lightgray",
+              height: 200,
+              border: "1px solid #8c8c8c",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
             {...getRootProps()}
           >
+            <i
+              class="fas fa-plus"
+              style={{
+                fontSize: "50px",
+                color: "rgb(114 114 114)",
+              }}
+            ></i>
             <input {...getInputProps()} />
           </div>
         )}
       </Dropzone>
       {loading ? (
-        <h2
-          style={{
-            color: "rgba(83, 83, 83, 0.5)",
-            margin: "100px auto",
-            width: "150px",
-            height: "50px",
-            textAlign: "center",
-            backgroundColor: "rgb(200, 200, 200, 0.4)",
-          }}
-        >
-          . . .
-        </h2>
+        <div style={{ border: "1px solid #8c8c8c" }}>
+          <h2
+            style={{
+              color: "rgba(83, 83, 83, 0.5)",
+              margin: "80px auto",
+              width: "100px",
+              height: "40px",
+              textAlign: "center",
+              backgroundColor: "rgb(200, 200, 200, 0.4)",
+            }}
+          >
+            . . .
+          </h2>
+        </div>
       ) : (
         <div
           onClick={() => deleteHandler}
           style={{
             display: "flex",
-            width: "350px",
-            height: "240px",
+            height: "100%",
             overflowX: "scroll",
           }}
         >
           <img
             style={{
               minWidth: "320px",
-              width: "320px",
-              height: "220px",
+              height: "100%",
             }}
             src={image}
             alt="movie stillcut"
