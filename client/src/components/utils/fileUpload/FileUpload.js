@@ -30,6 +30,7 @@ function FileUpload(props) {
       })
       .catch((err) => alert(err, "파일을 저장하는데 실패했습니다."));
   };
+
   const deleteHandler = (image) => {
     const currentIndex = image.indexOf(image);
     let newImage = [...image];
@@ -38,6 +39,7 @@ function FileUpload(props) {
     setLoading(true);
     props.refreshFunction(newImage);
   };
+
   return (
     <div
       style={{
