@@ -72,7 +72,6 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
 userSchema.methods.generateToken = function (cb) {
   let user = this;
   let token = jwt.sign(user._id.toHexString(), "secretToken");
-  // let oneHour = moment
   user.token = token;
   user.save(function (err, user) {
     if (err) return cb(err);

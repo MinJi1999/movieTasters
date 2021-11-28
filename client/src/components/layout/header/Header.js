@@ -68,7 +68,6 @@ function Header(props) {
               </div>
             </>
           )}
-          {/* <div className="line-animation"></div> */}
         </div>
       </div>
       <Notify visible={visible} text={"로그아웃됐습니다."} />

@@ -82,7 +82,6 @@ router.get("/post_by_id", (req, res) => {
       return item;
     });
   }
-  // Post.find({_id: {$in: productIds }})
   Post.find({ _id: postId })
     .populate("writer")
     .exec((err, post) => {
@@ -130,7 +129,6 @@ router.post("/findByGenre", (req, res) => {
     }
   }
   Post.find(findArgs)
-    // Post.find(findArgs)
     .populate("writer")
     .sort({ _id: -1 })
     .exec((err, post) => {

@@ -46,8 +46,6 @@ function MyHome(props) {
 
   const renderChartData = (genreArray) => {
     const genreCount = genreArray.reduce((acc, cur) => {
-      // 20line을 보면 제가 acc 기본값을 {}으로 지정해준 걸 확인할 수 있습니다.
-      // 누산객체에 현재 language가 없으면 0, 있으면 기존 count value
       const genreCount = acc[cur];
       const count = genreCount || 0;
 

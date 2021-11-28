@@ -4,7 +4,6 @@ import "./index.scss";
 import apiClient from "../../../apiClient";
 
 function Credit({ postId, open }) {
-  // console.log(actor);
   const [post, setPost] = React.useState({});
 
   React.useEffect(() => {
@@ -13,7 +12,6 @@ function Credit({ postId, open }) {
         .get(`/api/post/post_by_id?id=${postId}&type=single`)
         .then((res) => {
           setPost(res.data.post[0]);
-          console.log(post);
         });
     }
   }, []);

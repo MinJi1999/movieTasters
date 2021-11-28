@@ -14,9 +14,6 @@ function PostUpdate(props) {
   const [notify, setNotify] = React.useState("");
   const [visible, setVisible] = React.useState(false);
   const [content, setContent] = React.useState("");
-  // const [genre, setGenre] = React.useState("");
-  // const [genreCount, setGenreCount] = React.useState(0);
-  const [images, setImages] = React.useState([]);
   const [postData, setPostData] = React.useState({
     movieTitle: "",
     postTitle: "",
@@ -53,13 +50,6 @@ function PostUpdate(props) {
     };
 
     if (postData.postTitle.length < 25) {
-      // if (genreCount > 1) {
-      //   setNotify("하나의 장르만 선택 가능합니다.");
-      //   setVisible(true);
-      //   setTimeout(() => {
-      //     setVisible(false);
-      //   }, 2500);
-      // } else {
       axios({
         url: "/api/post/update",
         method: "put",
@@ -76,7 +66,6 @@ function PostUpdate(props) {
           }
         })
         .catch((err) => console.log(err));
-      // }
     } else alert("포스트 제목의 최대 길이는 25글자입니다.");
   };
 
@@ -96,17 +85,6 @@ function PostUpdate(props) {
     setContent(e);
   };
 
-  // const genreHandler = (checked, id) => {
-  //   if (checked) {
-  //     postData.genre = id;
-  //     // console.log("checked", genre);
-  //     setGenreCount(genreCount + 1);
-  //   } else {
-  //     // console.log("unchecked" + genre);
-  //     setGenreCount(genreCount - 1);
-  //   }
-  // };
-
   const genreRender = genres.map((item, index) => {
     return (
       <div key={index}>
@@ -115,10 +93,6 @@ function PostUpdate(props) {
           id={item}
           checked={postData.genre === item ? true : false}
           readOnly
-          // defaultChecked={ }
-          // onChange={(e) => {
-          //   genreHandler(e.currentTarget.checked, item);
-          // }}
         />
         <label htmlFor={item}>{item}</label>
       </div>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./index.scss";
 
 function UpdateModal({ postId, open }) {
-  console.log(postId);
   return (
     <>
       {open ? (

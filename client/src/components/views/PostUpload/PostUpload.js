@@ -2,7 +2,6 @@ import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./index.scss";
-// import axios from "axios";
 import { genres } from "../../utils/genresArray";
 import Notify from "../../utils/notify/Notify";
 import FileUpload from "../../utils/fileUpload/FileUpload";
@@ -46,26 +45,11 @@ function PostUpload(props) {
     setContent(e);
   };
 
-  // const genreHandler = (checked, id) => {
-  //   if (checked) {
-  //     if (id.length >= 1) {
-  //       setNotify("하나의 장르만 선택 가능합니다.");
-  //       setGenre("");
-  //     } else {
-  //       setGenre(genre);
-  //     }
-  //   } else {
-  //     setGenre();
-  //   }
-  // };
-
   const genreHandler = (checked, id) => {
     if (checked) {
       setGenre(id);
-      // console.log("checked", genre);
       setGenreCount(genreCount + 1);
     } else {
-      // console.log("unchecked" + genre);
       setGenreCount(genreCount - 1);
     }
   };

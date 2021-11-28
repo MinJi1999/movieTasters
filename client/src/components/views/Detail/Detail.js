@@ -6,6 +6,7 @@ import { getPostById } from "../../../_actions/user_action";
 
 function Detail(props) {
   const [resPost, setResPost] = React.useState([]);
+  const [actor, setActor] = React.useState([]);
   const [open, setOpen] = React.useState(true);
   const postId = props.match.params.postId;
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Detail(props) {
       .then((res) => {
         if (res.payload.success) {
           setResPost(res.payload.post);
+          setActor(res.payload.post[0].actor);
         }
       })
       .catch((err) => console.log(err));
@@ -25,7 +27,7 @@ function Detail(props) {
 
   setTimeout(() => {
     setOpen(false);
-  }, 1000); //수정
+  }, 7000);
 
   const renderPost = resPost.map((post, index) => {
     return (
@@ -52,13 +54,21 @@ function Detail(props) {
     );
   });
 
+  const readerActor = actor.map((item) => {
+    return (
+      <div key={item._id} style={{ marginBottom: "10px" }}>
+        배우&emsp;{item.trim()}
+      </div>
+    );
+  });
+
   const renderCredit = resPost.map((item) => {
     return (
       <div className="credit-text-box" key={item._id}>
-        <div className="credit-text center">{item.movieTitle}</div>
+        <div className="credit-title-text center">{item.movieTitle}</div>
         <div className="credit-text">장르&emsp;{item.genre}</div>
         <div className="credit-text">감독&emsp;{item.director}</div>
-        <div className="credit-text">배우&emsp;{item.actor.join(", ")}</div>
+        <div className="credit-text">{readerActor}</div>
       </div>
     );
   });

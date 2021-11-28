@@ -37,12 +37,7 @@ function GenreCheckbox(props) {
       </div>
     );
   });
-  return (
-    <div className="genre-checkbox-container">
-      {genreRender}
-      {/* <button onClick={getPost} /> */}
-    </div>
-  );
+  return <div className="genre-checkbox-container">{genreRender}</div>;
 }
 
 export default GenreCheckbox;

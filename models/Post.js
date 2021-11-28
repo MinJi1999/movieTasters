@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema(
   {
     writer: {
       type: Schema.Types.ObjectId,
-      ref: "User", //이거는 writer를 통해 User정보를 보여주겠다는 것
+      ref: "User",
     },
     movieTitle: {
       type: String,

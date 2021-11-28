@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../models/User");
 const { auth } = require("../middleware/auth");
-// const { Post } = require('../models/Post')
 
 router.get("/auth", auth, (req, res) => {
   res.status(200).json({
@@ -48,7 +47,6 @@ router.post("/login", (req, res) => {
               if (err) {
                 return res.status(400).send(err);
               } else {
-                //     res.cookie("W_authExp", user.tokenExp)
                 res.cookie("x_auth", user.token).status(200).json({
                   loginSuccess: true,
                   userId: user._id,
@@ -69,7 +67,6 @@ router.get("/logout", auth, (req, res) => {
     },
     {
       token: "",
-      // tokenExp: ""
     },
     (err, user) => {
       if (err) return res.json({ logoutSuccess: false, err });

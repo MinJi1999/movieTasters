@@ -26,7 +26,6 @@ function Main(props) {
       .post("/api/post/findByGenre", filteredGenre)
       .then((res) => {
         if (res.data.success) {
-          // console.log(res);
           setPostDatas(res.data.post);
         }
       })
