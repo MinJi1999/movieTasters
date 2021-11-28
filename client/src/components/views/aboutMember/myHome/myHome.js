@@ -48,7 +48,6 @@ function MyHome(props) {
     const genreCount = genreArray.reduce((acc, cur) => {
       const genreCount = acc[cur];
       const count = genreCount || 0;
-
       return {
         ...acc,
         [cur]: count + 1,

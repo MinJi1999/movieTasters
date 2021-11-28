@@ -101,7 +101,6 @@ function Main(props) {
                 </tr>
               </tbody>
             </table>
-            {/* <div className="movie-content">{ReactHtmlParser(post.content)}</div> */}
           </div>
           <div className="img-container">
             <div className="grey-noise"></div>
