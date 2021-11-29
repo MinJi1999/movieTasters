@@ -184,7 +184,7 @@ function PostUpdate(props) {
           </table>
           <FileUpload
             refreshFunction={updateImage}
-            prevImage={postData.images[0]}
+            prevImage={postData.images}
           />
         </div>
         <CKEditor

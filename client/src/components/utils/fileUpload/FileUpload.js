@@ -9,6 +9,7 @@ function FileUpload(props) {
   React.useEffect(() => {
     if (props.prevImage) {
       setImage(props.prevImage);
+      setLoading(false);
     } else {
       setImage([]);
     }
@@ -61,7 +62,7 @@ function FileUpload(props) {
             {...getRootProps()}
           >
             <i
-              class="fas fa-plus"
+              className="fas fa-plus"
               style={{
                 fontSize: "50px",
                 color: "rgb(114 114 114)",
