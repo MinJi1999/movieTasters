@@ -130,7 +130,7 @@ router.post("/findByGenre", (req, res) => {
   }
   Post.find(findArgs)
     .populate("writer")
-    .sort({ _id: -1 })
+    .sort({ updatedAt: -1 })
     .exec((err, post) => {
       if (err) {
         return res.status(400).json({ success: false, err });
