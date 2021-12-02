@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment";
+import "moment/locale/ko";
 import "./index.scss";
 import GenreCheckbox from "../../utils/genreCheckbox/GenreCheckbox";
 import apiClient from "../../../apiClient";
@@ -33,10 +35,11 @@ function Main(props) {
   };
 
   const renderPost = postDatas.map((post, index) => {
+    const date = moment(post.updatedAt).format("YYYY年 MM月 DD日");
     return (
       <div className="post-container" key={post._id}>
         <div className="post-index" key={post._id}>
-          No.{index + 1}
+          {date}
         </div>
         <div
           className="post-box"

@@ -7,7 +7,6 @@ import {
   GET_POST_BY_ID,
   SAVE_USER,
 } from "./types";
-import axios from "axios";
 import apiClient from "../apiClient";
 
 const USER_PATH = "/api/user";
