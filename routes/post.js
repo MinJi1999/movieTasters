@@ -41,7 +41,7 @@ router.post("/save", (req, res) => {
 
 router.get("/getPost", (req, res) => {
   Post.find()
-    .sort({ _id: -1 })
+    .sort({ updatedAt: -1 })
     .populate("writer")
     .exec((err, post) => {
       if (err) {
@@ -62,7 +62,7 @@ router.get("/getMyPost", (req, res) => {
     });
   }
   Post.find({ writer: { $in: userId } })
-    .sort({ _id: -1 })
+    .sort({ updatedAt: -1 })
     .populate("writer")
     .exec((err, post) => {
       if (err) {
