@@ -8,6 +8,7 @@ import apiClient from "../../../apiClient";
 
 function Main(props) {
   const [postDatas, setPostDatas] = React.useState([]);
+  const [checkedGenre, setCheckedGenre] = React.useState(false);
 
   React.useEffect(() => {
     apiClient
@@ -20,7 +21,12 @@ function Main(props) {
       .catch((err) => alert(err, "포스트를 불러오는데 실패했소."));
   }, []);
 
+  const setCheckedGenreTrue = function () {
+    setCheckedGenre(true);
+  };
+
   const filteredPost = function (body) {
+    setCheckedGenre(true);
     const filteredGenre = {
       genre: body,
     };
@@ -122,7 +128,11 @@ function Main(props) {
 
   return (
     <div className="main-area">
-      <GenreCheckbox handleFilter={(genre) => filteredPost(genre)} />
+      <GenreCheckbox
+        handleFilter={(genre) => filteredPost(genre)}
+        checkedGenre={checkedGenre}
+        setCheckedGenreTrue={setCheckedGenreTrue}
+      />
       {postDatas.length > 0 ? (
         <>{renderPost}</>
       ) : (

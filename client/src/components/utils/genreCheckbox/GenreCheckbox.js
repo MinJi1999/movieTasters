@@ -5,11 +5,16 @@ import "./index.scss";
 function GenreCheckbox(props) {
   const [genre, setGenre] = React.useState([]);
 
+  console.log(props.checkedGenre);
   React.useEffect(() => {
-    props.handleFilter(genre);
+    if (props.checkedGenre) {
+      props.handleFilter(genre);
+    } else {
+    }
   }, [genre]);
 
   const genreHandler = (checked, id) => {
+    props.setCheckedGenreTrue();
     if (checked) {
       setGenre([...genre, id]);
     } else {
