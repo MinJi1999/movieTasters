@@ -42,7 +42,7 @@ function Header(props) {
         <div className="test" onClick={urlToHome}>
           <div className="title-container">
             <h1 className="main-title" style={{ marginBottom: "5px" }}>
-              :영화 미식가
+              :영화 미식가들
             </h1>
             <h1 className="main-title">:Movie Tasters</h1>
           </div>
