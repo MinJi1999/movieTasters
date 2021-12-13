@@ -16,6 +16,15 @@ body {
   overflow-x: hidden;
   background-image: url(./공통img/noise.png);
 }
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+}
 
 @keyframes grain {
   0%,
