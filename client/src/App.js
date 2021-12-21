@@ -2,6 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./components/views/Login/Login";
 import Register from "./components/views/Register/Register";
 import Main from "./components/views/Main/Main";
+import LeavePage from "./components/views/LeavePage/LeavePage";
 import PostUpload from "./components/views/PostUpload/PostUpload";
 import PostUpdate from "./components/views/PostUpdate/PostUpdate";
 import Detail from "./components/views/Detail/Detail";
@@ -17,6 +18,11 @@ function App() {
       <Layout>
         <Switch>
           <Route exact path="/" component={Auth(Main, null)} />
+          <Route
+            exact
+            path="/is-this-real-goodbye"
+            component={Auth(LeavePage, null)}
+          />
           <Route path="/login" component={Auth(Login, false)} />
           <Route path="/register" component={Auth(Register, false)} />
           <Route path="/post-upload" component={Auth(PostUpload, true)} />
