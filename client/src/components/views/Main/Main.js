@@ -5,12 +5,22 @@ import "moment/locale/ko";
 import "./index.scss";
 import GenreCheckbox from "../../utils/genreCheckbox/GenreCheckbox";
 import apiClient from "../../../apiClient";
+import Modal from "../../utils/modal/Modal";
+import { useSelector } from "react-redux";
 
 function Main(props) {
   const [postDatas, setPostDatas] = React.useState([]);
   const [checkedGenre, setCheckedGenre] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
+  const [userId, setUserId] = React.useState("");
+  const user = useSelector((state) => state.user);
 
   React.useEffect(() => {
+    if (user.userData) {
+      setUserId(user.userData._id);
+    } else {
+      setModal(true);
+    }
     apiClient
       .get("/api/post/getPost")
       .then((res) => {
@@ -19,10 +29,14 @@ function Main(props) {
         }
       })
       .catch((err) => alert(err, "포스트를 불러오는데 실패했소."));
-  }, []);
+  }, [user]);
 
   const setCheckedGenreTrue = function () {
     setCheckedGenre(true);
+  };
+
+  const closeModal = function () {
+    setModal(false);
   };
 
   const filteredPost = function (body) {
@@ -38,6 +52,10 @@ function Main(props) {
         }
       })
       .catch((err) => alert(err, "포스트를 불러오는데 실패했소."));
+  };
+
+  const goToBlankPage = function () {
+    props.history.push("/is-this-real-goodbye");
   };
 
   const renderPost = postDatas.map((post, index) => {
@@ -127,22 +145,33 @@ function Main(props) {
   });
 
   return (
-    <div className="main-area">
-      <GenreCheckbox
-        handleFilter={(genre) => filteredPost(genre)}
-        checkedGenre={checkedGenre}
-        setCheckedGenreTrue={setCheckedGenreTrue}
-      />
-      {postDatas.length > 0 ? (
-        <>{renderPost}</>
+    <>
+      {!userId && modal ? (
+        <Modal
+          open={modal}
+          close={goToBlankPage}
+          handleClick={closeModal}
+          text={"많은 영화들의 스포일러가 포함되어 있습니다. 진입하시겠습니까?"}
+        />
       ) : (
-        <div className="no-post-area">
-          <div className="no-post-box">
-            <div className="no-post-text">업로드된 포스트가 없습니다.</div>
-          </div>
+        <div className="main-area">
+          <GenreCheckbox
+            handleFilter={(genre) => filteredPost(genre)}
+            checkedGenre={checkedGenre}
+            setCheckedGenreTrue={setCheckedGenreTrue}
+          />
+          {postDatas.length > 0 ? (
+            <>{renderPost}</>
+          ) : (
+            <div className="no-post-area">
+              <div className="no-post-box">
+                <div className="no-post-text">업로드된 포스트가 없습니다.</div>
+              </div>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 }
 

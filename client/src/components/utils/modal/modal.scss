@@ -24,10 +24,15 @@
     font-family: "ChosunKg";
     font-weight: 500;
     .modal-text {
-      padding: 50px 0px;
+      width: 82%;
+      height: 45px;
+      padding: 40px 0px;
+      text-align: center;
+      line-height: 30px;
     }
     .button-box {
       width: 70%;
+      margin-bottom: 15px;
       display: flex;
       justify-content: space-around;
       .no-button {
