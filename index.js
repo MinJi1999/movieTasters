@@ -18,16 +18,14 @@ app.use(cors());
 
 app.use("/api/user", require("./routes/user"));
 app.use("/api/post", require("./routes/post"));
-app.use("/api/data", function (req, res) {
-  res.json({ greeting: "Hello World" });
-});
+
 if (process.env.NODE_ENV === "production") {
-  app.use(
-    cors({
-      origin: "https://movie-tasters.herokuapp.com/",
-      credentials: true,
-    })
-  );
+  // app.use(
+  //   cors({
+  //     origin: "https://movie-tasters.herokuapp.com/",
+  //     credentials: true,
+  //   })
+  // );
   app.use(express.static(path.join(__dirname, "client/build")));
 
   // index.html for all page routes    html or routing and naviagtion
